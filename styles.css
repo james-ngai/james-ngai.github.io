@@ -4,3 +4,6 @@ html {
 body {
     padding-top: 70px;
 }
+td {
+    font-size: 15pt;
+}

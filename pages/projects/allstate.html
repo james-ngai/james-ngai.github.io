@@ -76,10 +76,11 @@
                             </li>
                         </ol>
                         <p class="lead">The secondary purpose was to correct taxpayer names in the CSV dataset. The data input from SalesGenie would often mistakenly attach an address with the former owner of the property rather than the current owner. 
-                            To correct this, I used <a href="https://kingcounty.gov/services/gis/Maps/parcel-viewer.aspx" class="text-muted">King County Parcel Viewer</a> which contains 
-                            the most recent data on home ownership in King County. The program proceeds to search the address through the url and find the current home owner. After retrieving the data, the names are compared between the two data points. If there is a discrepancy, the more recent name replaces the former one, so that new name is used for all advertising communications.
+                            To correct this, I used <a href="https://kingcounty.gov/services/gis/Maps/parcel-viewer.aspx" class="text-muted">King County Parcel Viewer</a>, which contains 
+                            the most recent data on home ownership in King County. The program proceeds to search each data point's address via url and find the current home owner. 
+                            After retrieving the data, the names are compared between the two data points. If there is a discrepancy, the more recent name replaces the former one, so that new name is used for all advertising communications.
                         </p>
-                        <p class="lead">The end result is a new csv file output with 7 new data points which removes uninsurable clients.
+                        <p class="lead">The end result is a new CSV file output with 7 new data points which removes uninsurable clients.
                         </p>
                     </div>
                 </article>

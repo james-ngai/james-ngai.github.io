@@ -62,11 +62,11 @@
                             <h4>Allstate Programs and XHR Requests</h4>
                         </div>
                         <p class="lead"> 
-                            The primary purpose of this script was to collect data on prospective clients to filter uninsurable data points from the original CSV dataset. There were 3 metrics to remove clients: Property Square Footage, Property Present Use, and Property Title. If the following conditions were met, the property was considered uninsurable and no mailers would be sent to that household.
+                            The primary purpose of this script was to collect data on prospective clients to filter uninsurable data points from the original CSV dataset. There were 3 metrics to remove clients: Property Square Footage, Property Present Use, and Property Title. If the following conditions were met, the property was considered uninsurable, and no mailers would be sent to that household.
                         </p>
                         <ol>
                             <li class="lead">
-                                A property with a square footage of less than 1000 sqft
+                                Property with a square footage of less than 1000 sqft
                             </li>
                             <li class="lead">
                                 Present Use includes an apartment/condo/business
@@ -77,10 +77,10 @@
                         </ol>
                         <p class="lead">The secondary purpose was to correct taxpayer names in the CSV dataset. The data input from SalesGenie would often mistakenly attach an address with the former owner of the property rather than the current owner. 
                             To correct this, I used <a href="https://kingcounty.gov/services/gis/Maps/parcel-viewer.aspx" class="text-muted">King County Parcel Viewer</a>, which contains 
-                            the most recent data on home ownership in King County. The program proceeds to search each data point's address via URL and find the current homeowner. 
-                            After retrieving the data, the names are compared between the two data points. If there is a discrepancy, the more recent name replaces the former one so that the new name is used for all advertising communications.
+                            the most recent data on home ownership in King County. The program searches each data point's address via URL and find the current homeowner. 
+                            After retrieving the data, the names are compared between the two data points. If there is a discrepancy, the more recent name replaces the former so that the new name is used for all advertising communications.
                         </p>
-                        <p class="lead">The end result is a new CSV file with 7 new data points which removes uninsurable clients.
+                        <p class="lead">The result is a new CSV file with 7 new data points, which removes uninsurable clients.
                         </p>
                     </div>
                 </article>

@@ -63,7 +63,62 @@
                         <div class="title">
                             <h1>Autokey Cipher</h1>
                         </div>
-                        <p>The Autokey cipher was invented by Vigen&#232;re</p>
+                        <p>The Autokey cipher was invented by Vigen&#232;re in 1586. Without the power of computation in that time period, many ciphers in our modern time are extremely vulnerable to brute force attacks. 
+                            While it reamins more sophisticated than more known ciphers like the Caesar Cipher, the two ciphers have the brute force computation time of \(O(n)\) where \(n\) is the number of characters in the alphabet. 
+                            Fortunately, this cipher avoids the vulnerability of Vigen&#232;re cipher(Another cipher invented by Vigen&#232;re). 
+                            Kasiski's Method analyzes the distribution of characters in the encrypted string and generates the <i>index of confidence</i>.</p>
+                        <p>
+                            \[\binom{f_i}{2} = \frac{f_i \left(f_i-1\right)}{2}\]
+                        </p>
+                        <p>
+                            The computation is the result of basic combinatorics, but if you would like to learn more about it, 
+                            you can read more about it <a href="https://www.it.uu.se/edu/course/homepage/security/vt09/labs/vigenere.html#:~:text=In%201863%2C%20a%20Prussian%20major,solve%20the%20resulting%20simple%20substitutions." class="text-muted">here</a>.
+                        </p>
+                        <p>Now let's talk about how Autokey Cipher is implemented. 
+                            First, we must define the alphabet of characters we will use. For our purupose, we will se the 26 characters of the English alphabet. 
+                            Then a value will be assigned to each character. 
+                            This can be done with a dictionary. Next, We have our plaintext which we wish to encrypt and a seed(A key for our encryption) 
+                            represented as follows: \(E\) (encrypted string), \(P\) (plain text), \(S\) (seed).
+                        </p>
+                        <p>
+                            \begin{align*}
+                                E_i &\equiv P_i + S_i \mod 26 \\
+                                S_{i+1} &= P_i
+                            \end{align*}
+                        </p>
+                        <p>This algorithm proceeds until \(i=n\) where n is the length of the string. On the last value the seed value generated will be irrelevant.</p>
+                        <p>
+                            To best illustrate the algorithm, it's best to show an example.
+                        </p>
+                        <p>
+                            Let our plain text be "HELLO" and our seed be "W".
+                        </p>
+                        <p>
+                            \begin{align*}
+                                E_1 &\equiv P_1 + S_1 \mod 26 \\
+                                E_1 &\equiv 7 + 22  \equiv 3 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                E_2 &\equiv P_1 + S_1 \mod 26 \\
+                                E_2 &\equiv 7 + 22  \equiv 3 \mod 26 \\
+                            \end{align*}
+                        </p>
+                        <p>The end result is the encrypted string ""</p>
+                        <p>This can be done with the following code segment</p>
+                        <img src="/images/encrypt.jpg" alt="Autokey Encryption Code" class="center">
+                        <p>
+                            \begin{minted}{python}
+                                def encrypt(string, seed):
+                                    num_list = str2val(string)
+                                    num_seed = table[seed]
+                                    num_list_final = []
+                                    for i in range(len(num_list)):
+                                        num_list_final.append(num_list[i] + num_seed % 26)
+                                        num_seed = num_list[i]
+                                    
+                                    return str(''.join(map(get_key, num_list_final)))
+                            \end{minted}
+                        </p>
                         <p>
                             When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
                             \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]

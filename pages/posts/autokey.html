@@ -74,6 +74,7 @@
                             The computation is the result of basic combinatorics, but if you would like to learn more about it, 
                             you can read more about it <a href="https://www.it.uu.se/edu/course/homepage/security/vt09/labs/vigenere.html#:~:text=In%201863%2C%20a%20Prussian%20major,solve%20the%20resulting%20simple%20substitutions." class="text-muted">here</a>.
                         </p>
+                        <h3>Encryption</h3>
                         <p>Now let's talk about how Autokey Cipher is implemented. 
                             First, we must define the alphabet of characters we will use. For our purupose, we will se the 26 characters of the English alphabet. 
                             Then a value will be assigned to each character. 
@@ -99,27 +100,59 @@
                                 E_1 &\equiv 7 + 22  \equiv 3 \mod 26 \\
                             \end{align*}
                             \begin{align*}
-                                E_2 &\equiv P_1 + S_1 \mod 26 \\
-                                E_2 &\equiv 7 + 22  \equiv 3 \mod 26 \\
+                                E_2 &\equiv P_2 + S_2 \mod 26 \\
+                                E_2 &\equiv 4 + 7  \equiv 11 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                E_3 &\equiv P_3 + S_3 \mod 26 \\
+                                E_3 &\equiv 11 + 4  \equiv 15 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                E_4 &\equiv P_4 + S_4 \mod 26 \\
+                                E_4 &\equiv 11 + 11  \equiv 22 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                E_5 &\equiv P_5 + S_5 \mod 26 \\
+                                E_5 &\equiv 14 + 11  \equiv 25 \mod 26 \\
                             \end{align*}
                         </p>
-                        <p>The end result is the encrypted string "". This can be done with the following code segment</p>
+                        <p>The end result is the encrypted string "dlpwz". This can be done with the following code segment</p>
                         <img src="/images/encrypt.jpg" alt="Autokey Encryption Code" class="center">
+                        <h3>Decryption</h3>
+                        <p>Now let's decrypt the string "dlpwz". We will use the same seed and encrypted string.</p>
                         <p>
-                            \begin{minted}{python}
-                                def encrypt(string, seed):
-                                    num_list = str2val(string)
-                                    num_seed = table[seed]
-                                    num_list_final = []
-                                    for i in range(len(num_list)):
-                                        num_list_final.append(num_list[i] + num_seed % 26)
-                                        num_seed = num_list[i]
-                                    
-                                    return str(''.join(map(get_key, num_list_final)))
-                            \end{minted}
+                            \begin{align*}
+                                P_1 &\equiv E_1 - S_1 \mod 26 \\
+                                P_1 &\equiv 3 - 22 \equiv 7 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                P_2 &\equiv E_2 - S_2 \mod 26 \\
+                                P_2 &\equiv 11 - 7 \equiv 4 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                P_3 &\equiv E_3 - S_3 \mod 26 \\
+                                P_3 &\equiv 15 - 4 \equiv 11 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                P_4 &\equiv E_4 - S_4 \mod 26 \\
+                                P_4 &\equiv 22 - 11  \equiv 11 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                P_5 &\equiv E_5 - S_5 \mod 26 \\
+                                P_5 &\equiv 25 - 11  \equiv 14 \mod 26 \\
+                            \end{align*}
                         </p>
-                        
-                        <h5>Citations</h5>
+                        <p>This result back in our original string "hello". This operation can be performed by the following code.</p>
+                        <img src="/images/decrypt.jpg" alt="Autokey Decryption Code" class="center">
+                        <h3>Brute Force Attack</h3>
+                        <p>Since this cipher was designed to avoid easy easy interception in the 16th century, there are only \(n\) possible strings where \(n\) is the number of characters in the alphabet. 
+                            In our alphabet, there were only 26 characters, so after 26 iterations the string can be found. 
+                            This issue persists as unicode only has 149,186 characters, far too small to be considered secured with computers. 
+                            One issue that may arise is that multiple correct meanings may form when the alphabet expands, but this is not a problem for the Autokey Cipher as the plain text size increases.
+                            This can be seen in the following code segment.
+                        </p>
+                        <img src="/images/brute_force.jpg" alt="Brute Force Autokey Cipher" class="center">
+                        <h3>Citations</h3>
                         <cite>Rosen, K. H. “Chapter 8: Cryptology.” Elementary Number Theory and Its Applications, 5th ed., Pearson/Addison-Wesley, Boston, Massachusetts, 2005, pp. 298–299. </cite>
                     </div>
                 </article>

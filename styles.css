@@ -7,3 +7,9 @@ body {
 td {
     font-size: 15pt;
 }
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }

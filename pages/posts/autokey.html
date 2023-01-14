@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KFJF2L9');</script>
+        <!-- End Google Tag Manager -->
+
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="author" content="James Ngai" />
+        <title>Autokey Cipher - James Ngai</title>
+        <meta property="og:title" content="Autokey Cipher - James Ngai">
+        <meta name="description" content="James Ngai Computer Science, AI, and Math">
+        <meta property="og:description" content="James Ngai Computer Science, AI, and Math" />
+        <meta property="og:url" content="https://james-ngai.github.io/pages/posts/autokey.html">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link href="/styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFJF2L9"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        <header id="home">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light p-3">          
+                <a class="navbar-brand" href="/">James Ngai</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/pages/experience.html">Experience<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/pages/projects.html">Projects<span class="sr-only"></span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/pages/blog.html">Blog<span class="sr-only"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <main class="container-fluid">
+            <div id="courses" class="section">
+                <article class="row align-items-center justify-content-around p-5">
+                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
+                        <div class="title">
+                            <h1>Autokey Cipher</h1>
+                        </div>
+                        <p>The Autokey cipher was invented by Vigen&#232;re in 1586. Since computers ceased to exist then, many ciphers in our modern time are extremely vulnerable to brute force attacks. 
+                            While it reamins more sophisticated than more known ciphers like the Caesar Cipher, the two ciphers have the brute force asymptotic complexity of \(O(n)\) where \(n\) is the number of characters in the alphabet. 
+                            Fortunately, this cipher avoids the vulnerability of Vigen&#232;re cipher(Another cipher invented by Vigen&#232;re). 
+                            Kasiski's Method analyzes the distribution of characters in the encrypted string and generates the <i>index of confidence</i>.</p>
+                        <p>
+                            \[\binom{f_i}{2} = \frac{f_i \left(f_i-1\right)}{2}\]
+                        </p>
+                        <p>
+                            The end result is elementary combinatorics, but if you want to learn more about Kasiski Method, 
+                            you can read more about it <a href="https://www.it.uu.se/edu/course/homepage/security/vt09/labs/vigenere.html#:~:text=In%201863%2C%20a%20Prussian%20major,solve%20the%20resulting%20simple%20substitutions." class="text-muted">here</a>.
+                        </p>
+                        <h3>Encryption</h3>
+                        <p>Now let's talk about how Autokey Cipher is implemented. 
+                            First, we must define the alphabet of characters we will use. 
+                            For our purpose, we will use the 26 characters of the English alphabet where "a"=0 and "z"=25. 
+                            Then a value will be assigned to each character. 
+                            This can be done with a dictionary. 
+                            Next, We have our plaintext, which we wish to encrypt, and a seed(A key for our encryption) 
+                            represented as follows: \(E\) (encrypted string), \(P\) (plain text), and \(S\) (seed).
+                        </p>
+                        <p>
+                            \begin{align*}
+                                E_i &\equiv P_i + S_i \mod 26 \\
+                                S_{i+1} &= P_i
+                            \end{align*}
+                        </p>
+                        <p>This algorithm proceeds until \(i=n\) where n is the length of the string. On the last value, the seed value generated will be irrelevant.</p>
+                        <p>
+                            To best illustrate the algorithm, it's best to show an example.
+                        </p>
+                        <p>
+                            Let our plain text be "hello," and our seed is "w." This results in [7, 4, 11, 11, 14] for "hello," and 22 for our "w."
+                        </p>
+                        <p>
+                            \begin{align*}
+                                E_1 &\equiv P_1 + S_1 \mod 26 \\
+                                E_1 &\equiv 7 + 22  \equiv 3 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                E_2 &\equiv P_2 + S_2 \mod 26 \\
+                                E_2 &\equiv 4 + 7  \equiv 11 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                E_3 &\equiv P_3 + S_3 \mod 26 \\
+                                E_3 &\equiv 11 + 4  \equiv 15 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                E_4 &\equiv P_4 + S_4 \mod 26 \\
+                                E_4 &\equiv 11 + 11  \equiv 22 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                E_5 &\equiv P_5 + S_5 \mod 26 \\
+                                E_5 &\equiv 14 + 11  \equiv 25 \mod 26 \\
+                            \end{align*}
+                        </p>
+                        <p>The end result is the encrypted string "dlpwz." This can be done with the following code segment:</p>
+                        <img src="/images/encrypt.jpg" alt="Autokey Encryption Code" class="center">
+                        <h3>Decryption</h3>
+                        <p>Now let's decrypt the string "dlpwz" which is [3, 11, 15, 22, 25]. We will use the same seed and cipher text.</p>
+                        <p>
+                            \begin{align*}
+                                P_1 &\equiv E_1 - S_1 \mod 26 \\
+                                P_1 &\equiv 3 - 22 \equiv 7 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                P_2 &\equiv E_2 - S_2 \mod 26 \\
+                                P_2 &\equiv 11 - 7 \equiv 4 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                P_3 &\equiv E_3 - S_3 \mod 26 \\
+                                P_3 &\equiv 15 - 4 \equiv 11 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                P_4 &\equiv E_4 - S_4 \mod 26 \\
+                                P_4 &\equiv 22 - 11  \equiv 11 \mod 26 \\
+                            \end{align*}
+                            \begin{align*}
+                                P_5 &\equiv E_5 - S_5 \mod 26 \\
+                                P_5 &\equiv 25 - 11  \equiv 14 \mod 26 \\
+                            \end{align*}
+                        </p>
+                        <p>This results back in our original string "hello." This operation can be performed by the following code.</p>
+                        <img src="/images/decrypt.jpg" alt="Autokey Decryption Code" class="center">
+                        <h3>Brute Force Attack</h3>
+                        <p>Since this cipher was designed to avoid easy interception in the 16th century, there are only \(n\) possible strings where \(n\) is the number of characters in the alphabet. 
+                            In our alphabet, there were only 26 characters. Evidently, after 26 iterations, the string can be found. 
+                            This issue persists as Unicode only has 149,186 characters, far too small to be considered secure with computers. 
+                            One issue that may arise is that multiple correct meanings may form when the alphabet expands, but this is not a problem for the Autokey Cipher as the plain text size increases.
+                            The brute force algorithm can be viewed below.
+                        </p>
+                        <img src="/images/brute_force.jpg" alt="Brute Force Autokey Cipher" class="center">
+                        <h3>Citations</h3>
+                        <cite>Rosen, K. H. “Chapter 8: Cryptology.” Elementary Number Theory and Its Applications, 5th ed., Pearson/Addison-Wesley, Boston, Massachusetts, 2005, pp. 298–299. </cite>
+                    </div>
+                </article>
+            </div>
+        </main>
+        
+        <footer id = "contact" class="text-center text-lg-start bg-light text-muted">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+              <!-- Left -->
+              <div class="me-5 d-none d-lg-block">
+                <h5>Contact Information</h5>
+              </div>
+              <!-- Left -->
+          
+              <!-- Right -->
+              <div>
+                <a href="https://github.com/james-ngai" class="me-4 text-reset" style="text-decoration: none">
+                    <i class="bi bi-github" style="font-size: 2rem; color: black;"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/in/ngai-james/" class="me-4 text-reset" style="text-decoration: none">
+                    <i class="bi bi-linkedin" style="font-size: 2rem; color: #0e76a8;"></i>
+                </a>
+                <a href="mailto:jamesdngai@gmail.com" class="me-4 text-reset" style="text-decoration: none">
+                    <i class="bi bi-envelope" style="font-size: 2rem; color: gray;"></i>
+                </a>
+              </div>
+              <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+          
+            
+          
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+              Want to learn more? Checkout my <a class="text-reset fw-bold" href="/pages/blog.html">blog</a>
+            </div>
+
+          </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    </body>
+
+</html>

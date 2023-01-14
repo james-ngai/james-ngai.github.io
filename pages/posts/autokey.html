@@ -121,7 +121,7 @@
                         <p>The end result is the encrypted string "dlpwz." This can be done with the following code segment:</p>
                         <img src="/images/encrypt.jpg" alt="Autokey Encryption Code" class="center">
                         <h3>Decryption</h3>
-                        <p>Now let's decrypt the string "dlpwz". We will use the same seed and encrypted string.</p>
+                        <p>Now let's decrypt the string "dlpwz" which is [3, 11, 15, 22, 25]. We will use the same seed and cipher text.</p>
                         <p>
                             \begin{align*}
                                 P_1 &\equiv E_1 - S_1 \mod 26 \\
@@ -144,12 +144,12 @@
                                 P_5 &\equiv 25 - 11  \equiv 14 \mod 26 \\
                             \end{align*}
                         </p>
-                        <p>This result back in our original string "hello". This operation can be performed by the following code.</p>
+                        <p>This results back in our original string "hello." This operation can be performed by the following code.</p>
                         <img src="/images/decrypt.jpg" alt="Autokey Decryption Code" class="center">
                         <h3>Brute Force Attack</h3>
-                        <p>Since this cipher was designed to avoid easy easy interception in the 16th century, there are only \(n\) possible strings where \(n\) is the number of characters in the alphabet. 
-                            In our alphabet, there were only 26 characters, so after 26 iterations the string can be found. 
-                            This issue persists as unicode only has 149,186 characters, far too small to be considered secured with computers. 
+                        <p>Since this cipher was designed to avoid easy interception in the 16th century, there are only \(n\) possible strings where \(n\) is the number of characters in the alphabet. 
+                            In our alphabet, there were only 26 characters. Evidently, after 26 iterations, the string can be found. 
+                            This issue persists as Unicode only has 149,186 characters, far too small to be considered secure with computers. 
                             One issue that may arise is that multiple correct meanings may form when the alphabet expands, but this is not a problem for the Autokey Cipher as the plain text size increases.
                             This can be seen in the following code segment.
                         </p>

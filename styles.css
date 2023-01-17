@@ -12,4 +12,7 @@ td {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-  }
+}
+.icon {
+    text-decoration: none
+}

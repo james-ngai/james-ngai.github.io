@@ -1,150 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-KFJF2L9');</script>
-        <!-- End Google Tag Manager -->
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KFJF2L9");
+    </script>
+    <!-- End Google Tag Manager -->
 
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="author" content="James Ngai" />
-        <title>Projects - James Ngai</title>
-        <meta property="og:title" content="Projects - James Ngai">
-        <meta name="description" content="James Ngai Computer Science, AI, and Math">
-        <meta property="og:description" content="James Ngai Computer Science, AI, and Math" />
-        <meta property="og:url" content="https://james-ngai.github.io/pages/projects.html">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="James Ngai" />
+    <title>Projects - James Ngai</title>
+    <meta property="og:title" content="Projects - James Ngai" />
+    <meta
+      name="description"
+      content="James Ngai Computer Science, AI, and Math"
+    />
+    <meta
+      property="og:description"
+      content="James Ngai Computer Science, AI, and Math"
+    />
+    <meta
+      property="og:url"
+      content="https://james-ngai.github.io/pages/projects.html"
+    />
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <link href="/styles.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    </head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link href="/styles.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+  </head>
 
-    <body>
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFJF2L9"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KFJF2L9"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-        <header id="home">
-            <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light p-3">          
-                <a class="navbar-brand" href="/">James Ngai</a>
+    <header id="home">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light p-3">
+        <a class="navbar-brand" href="/">James Ngai</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/pages/experience.html">Experience<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/pages/projects.html">Projects<span class="sr-only"></span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/pages/blog.html">Blog<span class="sr-only"></span></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        
-        <main class="container-fluid">
-            <div id="projects" class="section">
-                <article class="row align-items-center justify-content-around p-5">
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4">
-                        <div class="title">
-                            <h4>CMU Lost and Found</h4>
-                        </div>
-                        <p class="lead"> Main CMU Lost and Found website built in React
-                        </p>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/experience.html"
+                >Experience<span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/projects.html"
+                >Projects<span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/blog.html"
+                >Blog<span class="sr-only"></span
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
-                        <a href="projects/lost_found.html" class="lead">Read More</a>
-                        <span class="lead">|</span>
-                        <a href="https://github.com/ScottyLabs/cmu_lost_and_found_v2" class="lead">Github</a>
-
-                    </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4">
-                        <img src="/images/projects/cmu_lost_and_found.jpg" alt="CMU Carnegie Mellon Lost and Found" class="img-fluid float-end">
-                    </div>
-                </article>
-                <article class="row align-items-center justify-content-around p-5">
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4">
-                        <div class="title">
-                            <h4>Google PageRank</h4>
-                        </div>
-                        <p class="lead"> A paper discussing and implementing the PageRank and HITS algorithm on a sample of websites. Topics include Markov Chains, Left Stochastic Matrices, Power Method, and LP spaces
-                        </p>
-
-                        <a href="/papers/pagerank.pdf" class="lead">Read More</a>
-
-                    </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4">
-                        <img src="/images/projects/pagerank.jpg" alt="Google PageRank" class="img-fluid float-end">
-                    </div>
-                </article>
-                <article class="row align-items-center justify-content-around p-5">
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4">
-                        <div class="title">
-                            <h4>Allstate XHR Requester and Web Scraper</h4>
-                        </div>
-                        <p class="lead"> A web scraper built in Python that collects prospective clients' data to run advertising campaigns with lower costs
-                        </p>
-
-                        <a href="projects/allstate.html" class="lead">Read More</a>
-                        <span class="lead">|</span>
-                        <a href="https://github.com/james-ngai/Allstate-Programs" class="lead">Github</a>
-
-                    </div>
-                    <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4">
-                        <img src="/images/projects/xhr.png" alt="XHR Requests Web Scraper" class="img-fluid float-end">
-                    </div>
-                </article>
+    <main class="container-fluid">
+      <div id="projects" class="section">
+        <article class="row align-items-center justify-content-around p-5">
+          <div
+            class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4"
+          >
+            <div class="title">
+              <h4>CMU Lost and Found</h4>
             </div>
-        </main>
-        
-        <footer id = "contact" class="text-center text-lg-start bg-light text-muted">
-            <!-- Section: Social media -->
-            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-              <!-- Left -->
-              <div class="me-5 d-none d-lg-block">
-                <h5>Contact Information</h5>
-              </div>
-              <!-- Left -->
-          
-              <!-- Right -->
-              <div>
-                <a href="https://github.com/james-ngai" class="me-4 text-reset icon">
-                    <i class="bi bi-github bs-github-icon"></i>
-                </a>
+            <p class="lead">Main CMU Lost and Found website built in React</p>
 
-                <a href="https://www.linkedin.com/in/ngai-james/" class="me-4 text-reset icon">
-                    <i class="bi bi-linkedin bs-linkedin-icon"></i>
-                </a>
-                <a href="mailto:jamesdngai@gmail.com" class="me-4 text-reset icon">
-                    <i class="bi bi-envelope bs-email-icon"></i>
-                </a>
-              </div>
-              <!-- Right -->
-            </section>
-            <!-- Section: Social media -->
-          
-            
-          
-            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-              Want to learn more? Checkout my <a class="text-reset fw-bold" href="/pages/blog.html">blog</a>
+            <a href="projects/lost_found.html" class="lead">Read More</a>
+            <span class="lead">|</span>
+            <a
+              href="https://github.com/ScottyLabs/cmu_lost_and_found_v2"
+              class="lead"
+              >Github</a
+            >
+          </div>
+          <div
+            class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4"
+          >
+            <img
+              src="/images/projects/cmu_lost_and_found.jpg"
+              alt="CMU Carnegie Mellon Lost and Found"
+              class="img-fluid float-end"
+            />
+          </div>
+        </article>
+        <article class="row align-items-center justify-content-around p-5">
+          <div
+            class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4"
+          >
+            <div class="title">
+              <h4>Google PageRank</h4>
             </div>
+            <p class="lead">
+              A paper discussing and implementing the PageRank and HITS
+              algorithm on a sample of websites. Topics include Markov Chains,
+              Left Stochastic Matrices, Power Method, and LP spaces
+            </p>
 
-          </footer>
+            <a href="/papers/projects/pagerank/pagerank.pdf" class="lead"
+              >Read More</a
+            >
+          </div>
+          <div
+            class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4"
+          >
+            <img
+              src="/images/projects/pagerank.jpg"
+              alt="Google PageRank"
+              class="img-fluid float-end"
+            />
+          </div>
+        </article>
+        <article class="row align-items-center justify-content-around p-5">
+          <div
+            class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4"
+          >
+            <div class="title">
+              <h4>Allstate XHR Requester and Web Scraper</h4>
+            </div>
+            <p class="lead">
+              A web scraper built in Python that collects prospective clients'
+              data to run advertising campaigns with lower costs
+            </p>
 
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    </body>
+            <a href="projects/allstate.html" class="lead">Read More</a>
+            <span class="lead">|</span>
+            <a
+              href="https://github.com/james-ngai/Allstate-Programs"
+              class="lead"
+              >Github</a
+            >
+          </div>
+          <div
+            class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xxs-4"
+          >
+            <img
+              src="/images/projects/xhr.png"
+              alt="XHR Requests Web Scraper"
+              class="img-fluid float-end"
+            />
+          </div>
+        </article>
+      </div>
+    </main>
 
+    <footer id="contact" class="text-center text-lg-start bg-light text-muted">
+      <!-- Section: Social media -->
+      <section
+        class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+      >
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+          <h5>Contact Information</h5>
+        </div>
+        <!-- Left -->
+
+        <!-- Right -->
+        <div>
+          <a href="https://github.com/james-ngai" class="me-4 text-reset icon">
+            <i class="bi bi-github bs-github-icon"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/ngai-james/"
+            class="me-4 text-reset icon"
+          >
+            <i class="bi bi-linkedin bs-linkedin-icon"></i>
+          </a>
+          <a href="mailto:jamesdngai@gmail.com" class="me-4 text-reset icon">
+            <i class="bi bi-envelope bs-email-icon"></i>
+          </a>
+        </div>
+        <!-- Right -->
+      </section>
+      <!-- Section: Social media -->
+
+      <div
+        class="text-center p-4"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        Want to learn more? Checkout my
+        <a class="text-reset fw-bold" href="/pages/blog.html">blog</a>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KFJF2L9");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="James Ngai" />
+    <title>Tower of Hanoi - James Ngai</title>
+    <meta property="og:title" content="Tower of Hanoi - James Ngai" />
+    <meta
+      name="description"
+      content="James Ngai Computer Science, AI, and Math"
+    />
+    <meta
+      property="og:description"
+      content="James Ngai Computer Science, AI, and Math"
+    />
+    <meta
+      property="og:url"
+      content="https://james-ngai.github.io/pages/posts/towers_of_hanoi.html"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link href="/styles.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KFJF2L9"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header id="home">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light p-3">
+        <a class="navbar-brand" href="/">James Ngai</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/experience.html"
+                >Experience<span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/projects.html"
+                >Projects<span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/blog.html"
+                >Blog<span class="sr-only"></span
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-fluid">
+      <div id="courses" class="section">
+        <article class="row align-items-center justify-content-around p-5">
+          <div
+            class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12"
+          >
+            <div class="title">
+              <h1>Tower of Hanoi</h1>
+            </div>
+            <h3>History of Problem</h3>
+            <p>
+              The Tower of Hanoi problem was invented by French mathematican
+              &#201douard Lucas. It was a legend that Hindu temples used the excercise to improve the mental discpline of young priests. 
+              For more info, read
+              <a
+                href="https://www.scientificamerican.com/article/the-tower-of-hanoi/#:~:text=The%20tower%20of%20Hanoi%20(also,mental%20discipline%20of%20young%20priests."
+                >Scientific American</a
+              >.
+            </p>
+            <h3>Problem Statement</h3>
+            Given \(n\) rings on rod A, where the ring strictly decrease in size, give a sequence of steps (moving the top ring on a rod to another rod) 
+            such that all \(n\) rings are on rod C by the end. The additional constraint is that no ring of larger size can be placed on a smaller ring. In the diagram, ring \(2\) 
+            cannot be placed on ringe \(1\) for example. Sounds simple, yet if it were we would not be discussing it here!
+            <img src="/images/blog/towers_of_hanoi/towers_of_hanoi.png" alt="Tower of Hanoi Image" class="center">
+            <h1>Solution</h1>
+            <h3>Recursive Nature of Problem</h3>
+            <p>
+            Let's start by looking at the problem with a small number of rings. 
+            If we have 1 ring, we can simply move it from rod A to rod C. 
+            If we have 2 rings, we can move the top ring from rod A to rod B, then move the bottom ring from rod A to rod C, and finally move the top ring from rod B to rod C.
+            If we have 3 rings, we can move the top 2 rings from rod A to rod B, then move the bottom ring from rod A to rod C, and finally move the top 2 rings from rod B to rod C.
+            Can you spot a certain pattern?
+            </p>
+            <img src="/images/blog/towers_of_hanoi/diagram.png" alt="Step by step nature to Tower of Hanoi" class="center">
+            <p> First observe the 3rd disk (disk on bottom) in the diagram above. We know this disk must be at the bottom of rod C. In order to do this, we need all other disks not on rod C. 
+              This means we want disk 1 and 2 on rod B. Notice this is because if we were able to move disk 3 to rod C, while all other disks can remain on rod 1 without all being placed on rod 2, the problem would be trivial.
+              Now we can apply the same logic to disk 2. We want disk 2 on rod C, so we need disk 1 on rod B. Finally, we can move disk 1 to rod C. Through the power of recursive thinking, 
+              we have created a simple procedure where we move our top n-1 disks to rod B, move our bottom disk to rod C, and finally move our top n-1 disks to rod C. Then the next step,
+              we can apply the same logic to the top n-1 disks on rod B and move n-2 disks to rod A and so on. This is the recursive nature of the problem.
+            </p>
+            <h3>SML Solution</h3>
+            <p>Given the recursive nature of this problem, this makes SML a great fit to write our solution in (this is just a personal preference). 
+            We first need to define our base case. The trival case \(n=0\) will simply return a blank statement, but this case is irrelevant for all nontrivial cases. 
+            The base case we care about is \(n=1\). In this case, we simply want to move the top disk from rod A to rod C. Now we can define our recursive case.
+            We want to move the top n-1 disks from rod x to rod y , move the bottom disk from rod x to rod z, and finally move the top n-1 disks from rod y to rod z. </p>
+            <p>We can define this in SML as follows:</p>
+             <img src="/images/blog/towers_of_hanoi/code.jpg" alt="SML Solution to Tower of Hanoi" class="center">
+            <p>Now we can test our solution. We can define a function with \(n=10\) disks with the function call main(1,3,10). As you can see, the number of steps required increases rapidly.</p>
+            <img src="/images/blog/towers_of_hanoi/main(1,3,10).jpg" alt="Code output for main(1,3,10)" class="center">
+            <h3>Work-Span Analysis</h3>
+            <p>If you are unfamiliar with computing runtime formally, I reccomend starting on page 8 of <a href="/papers/blogs/Towers_Hanoi/Time_Complexity.pdf">15-251 Notes</a>. </p> 
+              <p>To analyze the runtime
+            we will refer to the code above. For the base case of our computation, notice that it requires constant time, we will denote this as \(c_0\).</p>
+            <p>
+              \begin{align*} W(1) &= c_0 \\ 
+              W(n) &= 2W(n-1)+c_1 \\ \end{align*} 
+            </p>
+            <ul>
+              <li>Number of levels: \(n\)</li>
+              <li>Nodes per level: \(2^{i-1}\)</li>
+              <li>Work per Node: \(c_1\)</li>
+            </ul>
+            This results in the following summation:
+            <p>
+              \[\sum_{i=1}^n 2^{i-1} = 2^{n}-1 \in O(2^n) \tag{Finite Geometric Sum}\]
+            </p>
+            <p>Span:</p>
+            <p>
+              \begin{align*} S(1) &= c_0 \\ S(n) &= S(n-1) + c_1\end{align*}
+            </p>
+            <ul>
+              <li>Number of levels: \(n\)</li>
+              <li>Nodes per level: \(1\)</li>
+              <li>Work per Node: \(c_1\)</li>
+            </ul>
+            <p>
+              \[\sum_{i=1}^n c_1 = n \in O(n) \tag{Finite Geometric Sum}\]
+            </p>
+            <p>An interesting thing is that this is the best time complexity we can acheive as there is an exponential number of times the
+              rings need to be moved. Thus, our algorithm is in \(\Omega(2^n)\) and \(O(2^n)\) so the intrinsic time complexity of the Tower of Hanoi problem is \(\Theta(2^n)\). Note: Our work calculation matches our emprical results. Count the number of moves required given \(n\) rings, it precisely follows the
+              following \(2^{n}-1\).
+            </p>
+            <h3>Citations</h3>
+            <ul>
+              <li><cite>“15-251 Notes.” <i>15-251 Notes</i>, Carnegie Mellon University, 2019, https://www.cs251.com/ </cite></li>
+              <li><cite>De Brabandere, Sabine. “The Tower of Hanoi.” Scientific American, 26 Oct. 2017, https://www.scientificamerican.com/article/the-tower-of-hanoi/#:~:text=The%20tower%20of%20Hanoi%20(also,mental%20discipline%20of%20young%20priests. </cite></li>
+              <li><cite>"Towers of Hanoi: A Complete Recursive Visualization." <i>Youtube</i>, uploaded by Reducible. 26 May. 2020, https://youtu.be/rf6uf3jNjbo</li>
+            </ul>
+            </cite>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer id="contact" class="text-center text-lg-start bg-light text-muted">
+      <!-- Section: Social media -->
+      <section
+        class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+      >
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+          <h5>Contact Information</h5>
+        </div>
+        <!-- Left -->
+
+        <!-- Right -->
+        <div>
+          <a href="https://github.com/james-ngai" class="me-4 text-reset icon">
+            <i class="bi bi-github bs-github-icon"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/ngai-james/"
+            class="me-4 text-reset icon"
+          >
+            <i class="bi bi-linkedin bs-linkedin-icon"></i>
+          </a>
+          <a href="mailto:jamesdngai@gmail.com" class="me-4 text-reset icon">
+            <i class="bi bi-envelope bs-email-icon"></i>
+          </a>
+        </div>
+        <!-- Right -->
+      </section>
+      <!-- Section: Social media -->
+
+      <div
+        class="text-center p-4"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        Want to learn more? Checkout my
+        <a class="text-reset fw-bold" href="/pages/blog.html">blog</a>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

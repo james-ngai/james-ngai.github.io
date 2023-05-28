@@ -140,7 +140,7 @@
             <img src="/images/blog/towers_of_hanoi/diagram.png" alt="Step by step nature to Tower of Hanoi" class="center">
             <p> First observe the 3rd disk (disk on bottom) in the diagram above. We know this disk must be at the bottom of rod C. In order to do this, we need all other disks not on rod C. 
               This means we want disk 1 and 2 on rod B. Notice this is because if we were able to move disk 3 to rod C, while all other disks can remain on rod 1 without all being placed on rod 2, the problem would be trivial.
-              Now we can apply the same logic to disk 2. We want disk 2 on rod C, so we need disk 1 on rod B. Finally, we can move disk 1 to rod C. Through the power of recursive thinking, 
+              Now we can apply the same logic to disk 2. We want disk 2 on rod C, so we need disk 1 on rod A. Finally, we can move disk 2 to rod C. Through the power of recursive thinking, 
               we have created a simple procedure where we move our top n-1 disks to rod B, move our bottom disk to rod C, and finally move our top n-1 disks to rod C. Then the next step,
               we can apply the same logic to the top n-1 disks on rod B and move n-2 disks to rod A and so on. This is the recursive nature of the problem.
             </p>
@@ -154,9 +154,10 @@
             <p>Now we can test our solution. We can define a function with \(n=10\) disks with the function call main(1,3,10). As you can see, the number of steps required increases rapidly.</p>
             <img src="/images/blog/towers_of_hanoi/main(1,3,10).jpg" alt="Code output for main(1,3,10)" class="center">
             <h3>Work-Span Analysis</h3>
-            <p>If you are unfamiliar with computing runtime formally, I reccomend starting on page 8 of <a href="/papers/blogs/Towers_Hanoi/Time_Complexity.pdf">15-251 Notes</a>. </p> 
+            <p>If you are unfamiliar with computing runtime formally, I recommend starting on page 8 of <a href="/papers/blogs/Towers_Hanoi/Time_Complexity.pdf">15-251 Notes</a>. </p> 
               <p>To analyze the runtime
             we will refer to the code above. For the base case of our computation, notice that it requires constant time, we will denote this as \(c_0\).</p>
+            <p>Work:</p>
             <p>
               \begin{align*} W(1) &= c_0 \\ 
               W(n) &= 2W(n-1)+c_1 \\ \end{align*} 
@@ -182,9 +183,9 @@
             <p>
               \[\sum_{i=1}^n c_1 = n \in O(n) \tag{Finite Geometric Sum}\]
             </p>
-            <p>An interesting thing is that this is the best time complexity we can acheive as there is an exponential number of times the
-              rings need to be moved. Thus, our algorithm is in \(\Omega(2^n)\) and \(O(2^n)\) so the intrinsic time complexity of the Tower of Hanoi problem is \(\Theta(2^n)\). Note: Our work calculation matches our emprical results. Count the number of moves required given \(n\) rings, it precisely follows the
-              following \(2^{n}-1\).
+            <p>An interesting thing is that this is the best time complexity we can acheive is exponential as that is the number of moves that must be made.
+               Thus, our algorithm is in \(\Omega(2^n)\) and \(O(2^n)\) so the intrinsic time complexity of the Tower of Hanoi problem is \(\Theta(2^n)\). Note: Our work calculation matches our emprical results. 
+               Try counting the number of moves required given \(n\) rings, it precisely follows \(2^{n}-1\).
             </p>
             <h3>Citations</h3>
             <ul>

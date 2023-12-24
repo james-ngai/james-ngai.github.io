@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KFJF2L9");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="James Ngai" />
+    <title>Lost and Found - James Ngai</title>
+    <meta property="og:title" content="Lost and Found - James Ngai" />
+    <meta
+      name="description"
+      content="James Ngai Computer Science, AI, and Math"
+    />
+    <meta
+      property="og:description"
+      content="James Ngai Computer Science, AI, and Math"
+    />
+    <meta
+      property="og:url"
+      content="https://james-ngai.github.io/pages/projects/lost_found.html"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link href="/styles.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KFJF2L9"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header id="home">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light p-3">
+        <a class="navbar-brand" href="/">James Ngai</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/experience.html"
+                >Experience<span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/projects.html"
+                >Projects<span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/pages/blog.html"
+                >Blog<span class="sr-only"></span
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-fluid">
+      <div id="projects" class="section">
+        <article class="row align-items-center justify-content-around p-5">
+          <div
+            class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12"
+          >
+            <div class="title">
+              <h4>Introduction</h4>
+            </div>
+            <p class="lead">
+              The eBay Machine Learning competition is an annual event for
+              college students, spanning from undergraduates to PhD candidates.
+              This year’s challenge focused on Named Entity Recognition (NER),
+              also known as Token Classification. eBay assembled a dataset of 10
+              million entries comprising German Athletic Wear for this purpose.
+              Participants were provided with 5000 entries as training data. Due
+              to contract agreements, specific source code won't be shared, but
+              there will be a broad discussion of general ideas.
+            </p>
+            <img
+              src="/images/projects/eBay.jpg"
+              alt="eBay Logo"
+              class="center"
+            />
+            <div class="title">
+              <h4>Data</h4>
+            </div>
+            <p class="lead">
+              The training data is a TSV file formatted as seen in Figure 1. TSV
+              files are a common choice because they contain no commas, whereas
+              our data does not contain any tabs.
+            </p>
+            <figure class="figure center">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Record Number</th>
+                    <th>Title</th>
+                    <th>Token</th>
+                    <th>Tag</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Air Jordan Nike</td>
+                    <td>Air</td>
+                    <td>Produktlinie</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Air Jordan Nike</td>
+                    <td>Jordan</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Air Jordan Nike</td>
+                    <td>Nike</td>
+                    <td>Marke</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Air Jordan 7000 Nike</td>
+                    <td>Air</td>
+                    <td>Produktlinie</td>
+                  </tr>
+                </tbody>
+              </table>
+              <figcaption>Figure 1 - Example Training Dataset</figcaption>
+            </figure>
+            <p class="lead">
+              The record number only increments when a new title occurs in the
+              dataset. A blank tag signifies identification with the previous
+              token and the current token, separated by a space. Consequently,
+              for record numbers 1 and 2, the data represents 'Air Jordan' with
+              the tag 'Produktlinie.' This pattern extends to 'n' different
+              tokens without assigned tags.
+            </p>
+            <p class="lead">
+              Another dataset-specific choice involves treating all commas,
+              periods, slashes, apostrophes, etc., as space-separated entities
+              within the sentence. Hence, individual punctuations must be
+              classified. This design decision is valid and applies to the test
+              set, rendering further discussion unnecessary.
+            </p>
+            <p class="lead">
+              Example Transformation: 'That's too bad, I wish it was cheaper.'
+              -> 'That's too bad , I wish it was cheaper .'
+            </p>
+            <p class="lead">
+              It's important to note that the data isn't 100% accurate due to
+              human labeling, introducing some noise. Consequently, our modeled
+              function may not be completely accurate either.
+            </p>
+            <p class="lead">
+              The test dataset was identical, except for the 'Token' and 'Tag'
+              columns.
+            </p>
+            <div class="title">
+              <h4>Data Pipeline</h4>
+            </div>
+            <p class="lead">
+              Since the data is not publicly available, and specific to
+              individual needs, we will give a brief overview. I first converted
+              the tsv data into a Hugging Face compatible dataset. There are
+              numerous NER tutorials that discuss what these datasets look like.
+              I would suggest using conll2003 as the gold standard of datasets
+              for Hugging Face and NER.
+            </p>
+            <div class="title">
+              <h4>Ablation Outline</h4>
+            </div>
+            <p class="lead">
+              To provide a complete context for the ablation progression in this
+              article, I began the competition with no prior NLP expertise.
+              Consequently, it was akin to learning on the job. The subsequent
+              ablations are presented in chronological order.
+            </p>
+            <div class="title">
+              <h4>Initial Models</h4>
+            </div>
+            <p class="lead">
+              For the initial model training, I followed a straightforward SpaCy
+              tutorial online, omitting the use of training/validation sets.
+              Instead, I allowed my local CPU to train the model for 1.5 days
+              until completion. The model achieved an F1 score of approximately
+              0.900 using a basic inference pipeline.
+            </p>
+            <p class="lead">
+              To enhance the inference pipeline, I encountered an issue with
+              SpaCy not assigning tags to every token in the Title. This led to
+              random tokens lacking tags, visibly impacting the final score. I
+              addressed this by employing a simple algorithm that recursively
+              broke down the text until all tokens received a tag from the
+              pipeline. Tokens that remained untagged were labeled as 'No Tag'.
+            </p>
+            <p class="lead">
+              Despite my lack of experience in German, I identified several
+              errors in trivial examples generated by this model. To rectify
+              this, I implemented hard-coded rules tailored to handle these
+              specific issues. As a result, the model's performance improved to
+              an F1 score of around 0.905.
+            </p>
+            <p class="lead">
+              Recognizing the limitations of the current model's capabilities,
+              particularly its inability to accurately approximate simple
+              functions within the training data, I decided to upgrade to a
+              larger model. This decision led me to transition the model to
+              SpaCy Transformers, leveraging larger transformers available on
+              Hugging Face. However, this required GPU-based training, so I
+              migrated all training processes to Google Colab and allowed it to
+              train for approximately 3 hours.
+            </p>
+            <p class="lead">
+              Surprisingly, the resulting performance remained consistent,
+              indicating that the current model architectures were insufficient
+              to surpass the existing benchmarks of approximately 0.94 at that
+              time.
+            </p>
+            <div class="title">
+              <h4>Hugging Face Models</h4>
+            </div>
+            <p class="lead">
+              Seeking significant model improvement, I switched to models
+              available on Hugging Face. For those unfamiliar, Hugging Face is a
+              leading company for Open Source Models housing many cutting-edge
+              models developed by companies such as Google and Facebook.
+            </p>
+            <p class="lead">
+              Unlike the previous SpaCy models, the top-tier models on Hugging
+              Face are notably larger and have undergone extensive fine-tuning
+              and training by these tech giants, resulting in anticipated better
+              performance.
+            </p>
+            <p class="lead">
+              Initially, I conducted a sweep on the following models presented.
+              They are seperated into two categories, those that peformed well
+              and those that did not.
+            </p>
+            Peformant Models:
+            <ul>
+              <li>
+                <a href="https://huggingface.co/xlm-roberta-large"
+                  >xlm-roberta-large</a
+                >
+              </li>
+              <li>
+                <a href="https://huggingface.co/deepset/gbert-large"
+                  >deepset/gbert-large</a
+                >
+              </li>
+            </ul>
+            Non-Performant Models:
+            <ul>
+              <li>
+                <a href="https://huggingface.co/distilbert-base-german-cased"
+                  >distilbert-base-german-cased</a
+                >
+              </li>
+              <li>
+                <a href="https://huggingface.co/deepset/gelectra-base"
+                  >deepset/gelectra-base</a
+                >
+              </li>
+              <li>
+                <a href="https://huggingface.co/bert-base-german-cased"
+                  >bert-base-german-cased</a
+                >
+              </li>
+              <li>
+                <a href="https://huggingface.co/dbmdz/bert-base-german-uncased"
+                  >dbmdz/bert-base-german-uncased</a
+                >
+              </li>
+            </ul>
+            <p class="lead">
+              Following these initial ablations, we conducted a more
+              comprehensive test on the top 2 models. To ensure the validity of
+              these tests, we employed K-Cross Fold Validation with an 80-20
+              Train/Test split.
+            </p>
+            <p class="lead">
+              These ablations were executed on standard free Google Colab
+              accounts using a T4 GPU. xlm-roberta-large exhibited superior
+              performance, approximately ~0.05 better than gilbert-large.
+              Consequently, we achieved a performance of ~0.950 f1 score after
+              approximately 50 epochs of training.
+            </p>
+            <p class="lead">
+              After hyperparameter tuning, the performance further increased to
+              ~0.964 f1 score.
+            </p>
+            <div class="title">
+              <h4>SUPER BIG MODELS</h4>
+            </div>
+            <p class="lead">
+              Despite significant improvements, our model has not yet surpassed
+              the current top scores of approximately 0.945 F1 score.
+            </p>
+            <p class="lead">
+              To achieve this metric, I opted to conduct ablations on the
+              exlm-roberta-xxl, an 11 billion parameter model requiring 43 GiB.
+              This change pushed my hardware capabilities to the maximum.
+            </p>
+            <p class="lead">
+              After several days of attempting to procure cloud instances from
+              AWS and GCP, I managed to secure a p3.16xlarge instance on AWS.
+              For anyone seeking instances with ample computational power, I
+              recommend submitting AWS quota requests well in advance. As of
+              2023, obtaining superior GPUs from GCP is nearly impossible. If
+              you prefer Google, consider using Google Colab Pro+ to ensure
+              access to an A100 GPU.
+            </p>
+            <div class="title">
+              <h4>DeepSpeed</h4>
+            </div>
+            <p class="lead">
+              To accommodate our colossal model across the 8 V100 instances, we
+              utilized Microsoft's
+              <a href="https://github.com/microsoft/DeepSpeed">DeepSpeed</a>.
+              DeepSpeed enabled Tensor Parallelism, a necessity for our model's
+              fitting. Implementation merely required a DeepSpeed config file
+              and integrating DeepSpeed as a Hugging Face Trainer Argument.
+            </p>
+            <p class="lead">
+              Debugging with DeepSpeed posed immense challenges. A range of
+              errors emerged, spanning GPU/CPU OOM (Out of Memory), Network
+              Socket Failure, and Bus failure. These errors often displayed as
+              simple exit codes like -7, -11, with minimal explanation provided
+              in the DeepSpeed documentation beyond GitHub Pull Requests.
+            </p>
+            <p class="lead">
+              Training the complete model parameters incurred significant
+              expenses, with a single training run costing approximately $250.
+              While the full model's training might promise superior
+              performance, our limited budget constrained exploring dropout and
+              hyperparameters. A single training run proved unsatisfactory
+              within 25 epochs, each taking 40 minutes.
+            </p>
+            <div class="title">
+              <h4>LoRA and LoRAQ</h4>
+            </div>
+            <p class="lead">
+              To tackle the costly training challenges, I implemented LoRA into
+              the transformer model. This approach proved to be cost-effective
+              and should deliver similar results.
+            </p>
+            <p class="lead">
+              However, incorporating DeepSpeed with LoRA posed significant
+              difficulties. Despite conflicting information online about the
+              compatibility of LoRA with DeepSpeed, I found it unworkable. I
+              encountered errors related to tensor dimensions that were
+              indecipherable, and due to the limited time remaining in the
+              competition, debugging wasn't a viable option. Before giving up on
+              DeepSpeed on the p3.16xlarge instances, I attempted to modify the
+              DeepSpeed source code, but it was ineffective.
+            </p>
+            <p class="lead">
+              To resolve these issues, I transitioned to an A100 40GB GPU using
+              Google Colab Pro+. This cost only $50 and provided ample computing
+              credits for training models.
+            </p>
+            <p class="lead">
+              Using a single GPU provided a seamless experience. LoRA worked
+              effectively with rank matrices below 512, and I could experiment
+              with QLoRA for larger ranks.
+            </p>
+            <p class="lead">
+              The ablations significantly converged faster toward comparable
+              performance. However, despite experimenting with rank, alpha, and
+              dropout, we were unable to surpass our xlm-roberta-large
+              performance of 0.9364.
+            </p>
+            <div class="title">
+              <h4>Reflection</h4>
+            </div>
+            <p class="lead">
+              While our score didn't show improvement, our larger model had
+              untapped potential. The highest quiz score in the competition
+              reached approximately 0.935. I believe the larger model might have
+              needed additional regularization, data augmentation techniques, or
+              synthetic data to enhance its performance. Moreover, exploring
+              open-source datasets alongside eBay's data could be beneficial for
+              our model training.
+            </p>
+            <p class="lead">
+              In summary, the experience was valuable as it helped me acquire
+              Deep Learning/NLP skills. With an earlier start and more
+              experience, achieving a more competitive score would have been
+              feasible.
+            </p>
+            <p class="lead">
+              This revised version maintains the essence of your message while
+              refining the structure and clarity for a smoother read.
+            </p>
+            <p class="lead">
+              If you have any questions, feel free to reach out to me on
+              LinkedIn or email.
+            </p>
+
+            <div class="title">
+              <h4>Acknowledgement</h4>
+            </div>
+            <p class="lead">
+              I would like to thank eBay for hosting this competition and
+              providing me with the opportunity to learn and grow. I would also
+              like to thank Elvin Liu, who helped me throughout the competition.
+              Without his immense contribution, we would have significantly
+              fewer Google accounts.
+            </p>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer id="contact" class="text-center text-lg-start bg-light text-muted">
+      <!-- Section: Social media -->
+      <section
+        class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+      >
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+          <h5>Contact Information</h5>
+        </div>
+        <!-- Left -->
+
+        <!-- Right -->
+        <div>
+          <a href="https://github.com/james-ngai" class="me-4 text-reset icon">
+            <i class="bi bi-github bs-github-icon"></i>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/ngai-james/"
+            class="me-4 text-reset icon"
+          >
+            <i class="bi bi-linkedin bs-linkedin-icon"></i>
+          </a>
+          <a href="mailto:jamesdngai@gmail.com" class="me-4 text-reset icon">
+            <i class="bi bi-envelope bs-email-icon"></i>
+          </a>
+        </div>
+        <!-- Right -->
+      </section>
+      <!-- Section: Social media -->
+
+      <div
+        class="text-center p-4"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        Want to learn more? Checkout my
+        <a class="text-reset fw-bold" href="/pages/blog.html">blog</a>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
